@@ -1,12 +1,13 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import Header from "./components/Header";
-
 import "./App.css";
 
 function App() {
-  	const [movie, setMovie] = useState("");
-	const [watchlist, setMovielist] = useState("");
-	const [page, setPage] = useState("");
+	const [movie, setMovie] = useState([]);
+	const [watchlist, setMovieList] = useState([]);
+	const [page, setPage] = useState(1);
 
 	const getData = () => {
 		axios
