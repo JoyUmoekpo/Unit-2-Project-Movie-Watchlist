@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import Header from "./components/Header";
+import MovieScreen from "./components/MovieScreen";
 import "./App.css";
 
 function App() {
-	const [movie, setMovie] = useState([]);
-	const [watchlist, setMovieList] = useState([]);
+	const [movieList, setMovieList] = useState([]);
+	const [watchList, setWatchList] = useState([]);
 	const [page, setPage] = useState(1);
 
 	const getData = () => {
@@ -27,6 +28,14 @@ function App() {
 	return (
 		<div className="App">
 			<Header />
+			<main>
+				<MovieScreen
+					movieList={movieList}
+					page={page}
+					setPage={setPage}
+					list={watchList}
+				/>
+			</main>
 		</div>
 	);
 }
