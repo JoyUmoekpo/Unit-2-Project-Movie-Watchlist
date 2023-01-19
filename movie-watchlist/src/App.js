@@ -7,9 +7,20 @@ import Watchlist from "./components/Watchlist";
 import "./App.css";
 
 function App() {
-	const [movieList, setMovieList] = useState([]);
 	const [watchList, setWatchList] = useState([]);
+	const [movieList, setMovieList] = useState([]);
 	const [page, setPage] = useState(1);
+
+	const addMovie = (movie) => {
+		setWatchList(...watchList, movie);
+	};
+
+	const removeMovie = (movie) => {
+		const newState = watchList.filter((mov) => {
+			return mov !== movie;
+		});
+		setWatchList(newState);
+	};
 
 	const getData = () => {
 		axios
@@ -26,10 +37,6 @@ function App() {
 		getData();
 	}, [page]);
 
-	const addMovie = (movie) => {
-		setWatchList(...watchList, movie);
-	}
-
 	return (
 		<div className="App">
 			<Header />
@@ -40,9 +47,9 @@ function App() {
 					page={page}
 					setPage={setPage}
 					list={watchList}
+					removeMovie={removeMovie}
 				/>
-				<Watchlist 
-				list={watchList} />
+				<Watchlist list={watchList} removeMovie={removeMovie} />
 			</main>
 		</div>
 	);
