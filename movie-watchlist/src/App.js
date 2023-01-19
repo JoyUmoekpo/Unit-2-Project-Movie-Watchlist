@@ -3,6 +3,7 @@ import axios from "axios";
 
 import Header from "./components/Header";
 import MovieScreen from "./components/MovieScreen";
+import Watchlist from "./components/Watchlist";
 import "./App.css";
 
 function App() {
@@ -25,16 +26,23 @@ function App() {
 		getData();
 	}, [page]);
 
+	const addMovie = (movie) => {
+		setWatchList(...watchList, movie);
+	}
+
 	return (
 		<div className="App">
 			<Header />
 			<main>
 				<MovieScreen
+					addMovie={addMovie}
 					movieList={movieList}
 					page={page}
 					setPage={setPage}
 					list={watchList}
 				/>
+				<Watchlist 
+				list={watchList} />
 			</main>
 		</div>
 	);
