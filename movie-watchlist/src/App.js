@@ -12,7 +12,7 @@ function App() {
 	const [page, setPage] = useState(1);
 
 	const addMovie = (movie) => {
-		setWatchList(...watchList, movie);
+		setWatchList([...watchList, movie]);
 	};
 
 	const removeMovie = (movie) => {
